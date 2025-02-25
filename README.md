@@ -1,4 +1,5 @@
-# Algorithm Development and Analysis Platform
+# Algorithm Development and Analysis Platform 
+
 
 A comprehensive platform for developing, benchmarking, visualizing, and documenting algorithms with SQLite database storage and interactive visualization tools.
 
@@ -171,6 +172,9 @@ Edit the `obsidian_template.md` file to customize the format of exported documen
 - `performance_metrics`: Performance data
 - `improvements`: Version improvements
 - `feedback`: User feedback
+
+### Check docs folder for extra instructions.
+
 
 ## Acknowledgements
 
