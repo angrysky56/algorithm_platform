@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  algo-tester:
+    image: python:3.10-slim
+    container_name: algo-tester
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DB_PATH=/app/data/algo.db
+    command: >
+      bash -c "mkdir -p /app/data && mkdir -p /app/reports &&
+              pip install --user matplotlib numpy pandas &&
+              python scripts/init_database.py &&
+              python src/algorithm_tester.py &&
+              python src/visualize_performance.py"
+
+  algo-web:
+    image: nginx:alpine
+    container_name: algo-web
+    volumes:
+      - ./reports:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - algo-tester
